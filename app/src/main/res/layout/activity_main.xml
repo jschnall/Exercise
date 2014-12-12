@@ -3,4 +3,5 @@
     android:id="@+id/pager"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"/>
+    android:padding="16dp"
+    android:background="@drawable/bg_rect"/>

@@ -4,7 +4,7 @@
         <rotate
             android:fromDegrees="90"
             android:toDegrees="90"
-            android:drawable="@drawable/fill_selector"/>
+            android:drawable="@drawable/fill_selector2"/>
     </item>
 
 </layer-list>
