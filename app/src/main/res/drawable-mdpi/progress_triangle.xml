@@ -4,7 +4,7 @@
         <rotate
             android:fromDegrees="90"
             android:toDegrees="90"
-            android:drawable="@drawable/triangle_empty"/>
+            android:drawable="@drawable/triangle_empty2"/>
     </item>
 
     <item android:id="@android:id/progress">
@@ -12,7 +12,7 @@
             <rotate
                 android:fromDegrees="90"
                 android:toDegrees="90"
-                android:drawable="@drawable/triangle_fill" />
+                android:drawable="@drawable/triangle_fill2" />
         </clip>
     </item>
 </layer-list>
