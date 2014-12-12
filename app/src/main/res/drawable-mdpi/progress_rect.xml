@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <rotate
+            android:fromDegrees="90"
+            android:toDegrees="90"
+            android:drawable="@drawable/rect_empty"/>
+    </item>
+
+    <item android:id="@android:id/progress">
+        <clip android:clipOrientation="horizontal">
+            <rotate
+                android:fromDegrees="90"
+                android:toDegrees="90"
+                android:drawable="@drawable/rect_fill" />
+        </clip>
+    </item>
+</layer-list>
