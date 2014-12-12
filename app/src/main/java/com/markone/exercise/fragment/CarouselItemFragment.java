@@ -1,7 +1,10 @@
 package com.markone.exercise.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,9 +73,18 @@ public class CarouselItemFragment extends Fragment {
         mShapeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent launchIntent = new Intent(getActivity(), SliderActivity.class);
-                launchIntent.putExtra(SliderActivity.EXTRA_SHAPE, mShape);
-                startActivity(launchIntent);
+                Activity activity = getActivity();
+                Intent intent = new Intent(activity, SliderActivity.class);
+                intent.putExtra(SliderActivity.EXTRA_SHAPE, mShape);
+                //startActivity(intent);
+
+                String transitionName = getString(R.string.transition_shape);
+                ActivityOptionsCompat options =
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
+                                mShapeView,   // The view which starts the transition
+                                transitionName    // The transitionName of the view we’re transitioning to
+                        );
+                ActivityCompat.startActivity(activity, intent, options.toBundle());
             }
         });
 

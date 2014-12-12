@@ -6,5 +6,8 @@
     <ImageView
         android:id="@+id/shape"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:transitionName="@string/transition_shape"
+        android:padding="16dp"
+        />
 </RelativeLayout>

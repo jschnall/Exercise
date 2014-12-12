@@ -4,4 +4,5 @@
     <string name="carousel_picker">Carousel Picker</string>
     <string name="area_calculation">Area Calculation</string>
     <string name="percent">%1$d%%</string>
+    <string name="transition_shape">shape</string>
 </resources>

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:padding="16dp"
-    android:background="@color/white"
+    android:background="@drawable/bg_rect"
     >
 
     <SeekBar
@@ -17,9 +17,10 @@
         android:padding="0dp"
         android:thumbOffset="91dp"
         android:thumb="@drawable/progress_thumb"
-        android:background="@color/white"
         android:splitTrack="false"
-        />
+        android:transitionName="@string/transition_shape"
+        android:background="@null"
+    />
 
     <TextView
         android:id="@+id/value"
