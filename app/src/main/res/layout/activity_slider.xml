@@ -18,6 +18,7 @@
         android:thumbOffset="91dp"
         android:thumb="@drawable/progress_thumb"
         android:background="@color/white"
+        android:splitTrack="false"
         />
 
     <TextView

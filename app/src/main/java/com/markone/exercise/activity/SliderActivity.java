@@ -38,17 +38,17 @@ public class SliderActivity extends Activity {
         switch (mShape) {
             case CarouselItemFragment.OVAL: {
                 percent = prefs.getInt(Settings.OVAL_VALUE, 50);
-                mSeekBar.setProgressDrawable(getDrawable(R.drawable.progress_oval));
+                mSeekBar.setProgressDrawable(getResources().getDrawable(R.drawable.progress_oval));
                 break;
             }
             case CarouselItemFragment.TRIANGLE: {
                 percent = prefs.getInt(Settings.TRIANGLE_VALUE, 50);
-                mSeekBar.setProgressDrawable(getDrawable(R.drawable.progress_triangle));
+                mSeekBar.setProgressDrawable(getResources().getDrawable(R.drawable.progress_triangle));
                 break;
             }
             case CarouselItemFragment.RECTANGLE: {
                 percent = prefs.getInt(Settings.RECT_VALUE, 50);
-                mSeekBar.setProgressDrawable(getDrawable(R.drawable.progress_rect));
+                mSeekBar.setProgressDrawable(getResources().getDrawable(R.drawable.progress_rect));
                 break;
             }
         }
