@@ -34,6 +34,7 @@ public class VerticalSeekBar extends SeekBar {
     }
 
     protected void onDraw(Canvas c) {
+        // TODO draw to separate square canvas to do rotation, then draw back to original
         c.rotate(-90);
         c.translate(-getHeight(), 0);
 
