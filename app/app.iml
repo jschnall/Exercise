@@ -85,7 +85,6 @@
     <orderEntry type="library" exported="" name="support-v4-21.0.2" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-21.0.2" level="project" />
     <orderEntry type="library" exported="" name="carousel-api-v1" level="project" />
-    <orderEntry type="library" exported="" name="1_carousel-api-v1" level="project" />
     <orderEntry type="module" module-name="FancyCoverFlow" exported="" />
   </component>
 </module>
