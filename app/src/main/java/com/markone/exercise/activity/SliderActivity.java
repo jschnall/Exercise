@@ -21,7 +21,6 @@ public class SliderActivity extends Activity {
     private static final int HEIGHT = 100;
 
     private int mShape;
-
     private TextView mTextView;
     private SeekBar mSeekBar;
 
