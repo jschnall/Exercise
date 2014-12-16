@@ -132,6 +132,9 @@ public class SliderActivity extends Activity {
                         (Math.acos(1d - 2d * segmentHeight / HEIGHT) - (1d - 2d * segmentHeight / HEIGHT) *
                                 Math.sqrt(4d * segmentHeight / HEIGHT - 4d * segmentHeight * segmentHeight / (HEIGHT * HEIGHT)));
 
+                if (segmentArea > area) {
+                    return 100d;
+                }
                 return segmentArea / area * 100;
             }
             case CarouselItemFragment.TRIANGLE: {
