@@ -1,1 +1,3 @@
-include ':app'
+include ':app', ':coverflow', ':carousel-api-v1'
+project(':coverflow').projectDir = new File('libraries/FancyCoverFlow/library')
+include ':FancyCoverFlow'
