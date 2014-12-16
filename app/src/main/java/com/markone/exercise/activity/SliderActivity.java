@@ -17,6 +17,9 @@ import com.markone.exercise.R;
 public class SliderActivity extends Activity {
     public static final String EXTRA_SHAPE = "shape";
 
+    private static final int WIDTH = 50;
+    private static final int HEIGHT = 100;
+
     private int mShape;
 
     private TextView mTextView;
@@ -34,32 +37,33 @@ public class SliderActivity extends Activity {
         mTextView = (TextView) findViewById(R.id.value);
         mSeekBar = (SeekBar) findViewById(R.id.shape);
 
-        int percent = 0;
+        int segmentHeight = 0;
         switch (mShape) {
             case CarouselItemFragment.OVAL: {
-                percent = prefs.getInt(Settings.OVAL_VALUE, 50);
+                segmentHeight = prefs.getInt(Settings.OVAL_VALUE, 50);
                 mSeekBar.setProgressDrawable(getResources().getDrawable(R.drawable.progress_oval));
                 break;
             }
             case CarouselItemFragment.TRIANGLE: {
-                percent = prefs.getInt(Settings.TRIANGLE_VALUE, 50);
+                segmentHeight = prefs.getInt(Settings.TRIANGLE_VALUE, 50);
                 mSeekBar.setProgressDrawable(getResources().getDrawable(R.drawable.progress_triangle));
                 break;
             }
             case CarouselItemFragment.RECTANGLE: {
-                percent = prefs.getInt(Settings.RECT_VALUE, 50);
+                segmentHeight = prefs.getInt(Settings.RECT_VALUE, 50);
                 mSeekBar.setProgressDrawable(getResources().getDrawable(R.drawable.progress_rect));
                 break;
             }
         }
-
+        mSeekBar.setProgress(segmentHeight);
+        double percent = calcPercent(segmentHeight);
         mTextView.setText(getString(R.string.percent, percent));
-        mSeekBar.setProgress(percent);
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                mTextView.setText(getString(R.string.percent, i));
+                double percent = calcPercent(i);
+                mTextView.setText(getString(R.string.percent, percent));
             }
 
             @Override
@@ -115,5 +119,39 @@ public class SliderActivity extends Activity {
         //int id = item.getItemId();
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private double calcPercent(int segmentHeight) {
+        switch (mShape) {
+            case CarouselItemFragment.OVAL: {
+                // http://www.had2know.com/academics/ellipse-segment-tank-volume-calculator.html
+                // (AB/4)[arccos(1 - 2h/A) - (1 - 2h/A)sqrt(4h/A - 4h^2/A^2)]
+                // where arccos is in radians, B is width, A is height, and h is segment height
+                double area = (int) (Math.PI / 4 * WIDTH * HEIGHT);
+                double segmentArea = (HEIGHT * WIDTH / 4) *
+                        (Math.acos(1d - 2d * segmentHeight / HEIGHT) - (1d - 2d * segmentHeight / HEIGHT) *
+                                Math.sqrt(4d * segmentHeight / HEIGHT - 4d * segmentHeight * segmentHeight / (HEIGHT * HEIGHT)));
+
+                return segmentArea / area * 100;
+            }
+            case CarouselItemFragment.TRIANGLE: {
+                // w * h / 2
+                double area = WIDTH * HEIGHT / 2; // 2500
+                double segmentWidth = segmentHeight / 2; // Will always be same 2:1 ratio
+                double segmentArea = segmentWidth * segmentHeight / 2;
+
+                return segmentArea / area * 100;
+            }
+            case CarouselItemFragment.RECTANGLE: {
+                // w * h (Would be more strictly correct to account for rounded corners, but would need to know their radius)
+                double area = WIDTH * HEIGHT; // 5000
+                double segmentArea = WIDTH * segmentHeight;
+
+                return segmentArea / area * 100;
+            }
+        }
+
+        return 0;
     }
 }
